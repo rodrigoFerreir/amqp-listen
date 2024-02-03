@@ -1,0 +1,25 @@
+version: '3.7'
+
+
+services:
+  rabbitmq_queue:
+    image: "rabbitmq:3-management"
+    hostname: "rabbitmq_queue"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq1"
+  
+  api:
+    build: .
+    ports:
+      - 7070:7070
+    depends_on:
+      - rabbitmq_queue
+    restart: always
