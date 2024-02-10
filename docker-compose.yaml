@@ -16,10 +16,10 @@ services:
     labels:
       NAME: "rabbitmq1"
   
-  api:
-    build: .
-    ports:
-      - 7070:7070
-    depends_on:
-      - rabbitmq_queue
-    restart: always
+  # api:
+  #   build: .
+  #   ports:
+  #     - 7070:7070
+  #   depends_on:
+  #     - rabbitmq_queue
+  #   restart: always
